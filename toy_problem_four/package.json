@@ -1,0 +1,14 @@
+{
+  "name": "toy-problem",
+  "version": "0.0.1",
+  "description": "Just my daily toy problems.",
+  "main": "src/problem.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine-node test/"
+  },
+  "author": "charlton.austin@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}
