@@ -9,33 +9,42 @@ Spades.
 
 Next create a function that generates
 two hands and scores them against one another
-The different kinds of hands can be (from highest score
-to lowest score).
+The different kinds of hands can be (from highest score to lowest score).
+
+Also, check out poker_hand_rangking.png image!
 
 *Royal Flush 	       	
-A straight from a ten to an ace with all five cards of the same suit. In poker all suits are ranked equally.
+A straight from a ten to an ace with all five cards of the same suit. 
+In poker all suits are ranked equally.(Check royal-flush.png)
 
 *Straight Flush 	       	
-Any straight with all five cards of the same suit.
+Any straight with all five cards of the same suit.(Check straight-flush.png)
 
 *Four of a Kind 	       	
 Any four cards of the same rank. 
-If two players share the same Four of a Kind (on the board), the bigger fifth card (the "kicker") decides who wins the pot.
+If two players share the same Four of a Kind (on the board), 
+the bigger fifth card (the "kicker") decides who wins the pot.
 
 *Full House 	       	
 Any three cards of the same rank together with any two cards of the same rank.
 
 *Flush 	       	
-Any five cards of the same suit (not consecutive). The highest card of the five determines the rank of the flush.
+Any five cards of the same suit (not consecutive). 
+The highest card of the five determines the rank of the flush.
 
 *Straight 	       	
-Any five consecutive cards of different suits. Aces can count as either a high or a low card.
+Any five consecutive cards of different suits. 
+Aces can count as either a high or a low card.
 
 *Three of a Kind 	       	
-Any three cards of the same rank. Our example shows three-of-a-kind Aces, with a King and a Queen as side cards - the best possible three of a kind.
+Any three cards of the same rank. 
+Our example shows three-of-a-kind Aces, 
+with a King and a Queen as side cards - the best possible three of a kind.
 
 *Two Pair 	       	
-Any two cards of the same rank together with another two cards of the same rank. Our example shows the best possible two-pair, Aces and Kings. The highest pair of the two determines the rank of the two-pair.
+Any two cards of the same rank together with another two cards of the same rank. 
+Our example shows the best possible two-pair, Aces and Kings. 
+The highest pair of the two determines the rank of the two-pair.
 
 *One Pair 	       	
 Any two cards of the same rank.
@@ -62,20 +71,19 @@ a hand and return which cards they would like to
 discard and which cards they would like to keep.
 */
 
-function generateAHand(deck){
+var generateAHand  = function(deck){
   return [];
 }
 
-function scoreTwoHands(handOne, handTwo){
+var scoreTwoHands = function(handOne, handTwo){
   // Return the higher of the two hands
   return handOne;
 }
-
-function replaceCards(cardsToKeep, cardsToDiscard){
+var replaceCards = function(cardsToKeep, cardsToDiscard){
   // return a full set of cards
 }
 
-function playTwoAI(aIOne, aITwo){
+var playTwoAI = function(aIOne, aITwo){
   // return the winner of the round.
 }
 
