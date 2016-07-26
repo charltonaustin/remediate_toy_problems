@@ -77,35 +77,6 @@ var drawInvertedArrow = function(tree,base){
   return InvertedArrow;
 }
 
-/*
-Now create a function, diamond, that draws:
-
-    *
-   ***
-  *****
- *******
-*********
- *******
-  *****  
-   ***
-    *
-
-    *
-   ***
-  *****
- 
- *******
-  *****  
-   ***
-    *
-    console.log(upside);
-  upside=upside.splice(upside.length-2)
-  console.log(upside);
-  upside=upside.join("\n")
-  console.log(upside);
-Now refactor your code to take parameter that is the size of the diamond.
-*/
-
 var drawDiamond = function(size){
   var middle=Math.floor(size/2);
   var upside=drawTriangleTwo(middle+1).slice(0,-1);
@@ -137,8 +108,25 @@ You should be able to parameterize this with some higher order
 functions. Try and see if you can make some parameters so you can
 control different parts of the face.
 */
+var drawSmileDown = function(){
+  var smile=""
+  for (var i = 28; i >=24; i--) {
+    if (i%4 === 0){
+      smile=makeString(" ",30-i,smile);
+      smile=makeString("*",i,smile)+"\n";
+    }else{
+      console.log(i);
+     smile=makeString(" ",30-i,smile);
+      smile=makeString("#",i,smile)+"\n";
+  }
+}
+    return smile;
+  
+}
+
 
 var drawSmile = function(){
+
   return "";
 }
 
