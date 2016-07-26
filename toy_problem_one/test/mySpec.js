@@ -6,15 +6,16 @@
   var triangle = "\n*\n**\n***\n****\n*****\n******\n"
   describe('drawTriangle', function () {
     it('should draw a triangle', function () {
-      expect(drawTriangle()).toBe(triangle);
+      expect(drawTriangle(6)).toBe(triangle);
     });
   });
+  
 
   var trianlgeTwo = "\n     *\n    ***\n   *****\n  *******\n *********\n***********\n";
   var drawTriangleTwo = require(name).drawTriangleTwo;
   describe('drawTriangleTwo', function () {
     it('should draw a triangle', function () {
-      expect(drawTriangleTwo()).toBe(trianlgeTwo);
+      expect(drawTriangleTwo(6)).toEqual(trianlgeTwo);
     });
   });
 
@@ -22,7 +23,7 @@
   var arrow = "\n     *\n    ***\n   *****\n  *******\n *********\n***********\n    ***\n    ***\n    ***\n";
   describe('drawArrow', function () {
     it('should draw an arrow', function () {
-      expect(drawArrow()).toBe(arrow);
+      expect(drawArrow(6,3)).toBe(arrow);
     });
   });
 
@@ -30,7 +31,7 @@
   var invertedArrow = "\n ***\n ***\n*****\n ***\n  *\n";
   describe('drawInvertedArrow', function () {
     it('should draw an inverted arrow', function () {
-      expect(drawInvertedArrow()).toBe(invertedArrow);
+      expect(drawInvertedArrow(3,2)).toBe(invertedArrow);
     });
   });
 
@@ -38,7 +39,7 @@
   var diamond = "\n    *\n   ***\n  *****\n *******\n*********\n *******\n  *****\n   ***\n    *\n";
   describe('drawDiamond', function () {
     it('should draw a diamond', function () {
-      expect(drawDiamond()).toBe(diamond);
+      expect(drawDiamond(9)).toBe(diamond);
     });
   });
 

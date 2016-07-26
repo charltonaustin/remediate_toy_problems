@@ -1,95 +1,80 @@
-/*
-These functions are meant to be done without the internet.
-They are pretty straight forward. Try and do all of them
-without any help from anyone. They require only basic 
-JavaScript
-*/
 
-
-/*
- Create a function called drawTriangle that draws the following:
-
-*
-**
-***
-****
-*****
-******
-
-Then refactor it so that you can contorl the height of the triangle.
-for instance drawTriangle(4) gives you back a trianle like
-
-*
-**
-***
-****
-Don't forget to write tests for it.
  
-*/
 
-var drawTriangle = function(){
-  return "";
-}
-
-/*
- Create a function called drawTriangleTwo that draws the following:
-
-     *
-    ***
-   *****
-  *******
- *********
-***********
-
-Then refactor it to so that it can take a height.
-*/
-
-var drawTriangleTwo = function(){
-  return "";
+var drawTriangle = function(n){
+  
+  var Triangle='\n';
+  for (var i = 1; i <= n; i++) {
+    for (var j = 0; j < i; j++) {
+       Triangle=Triangle + '*';
+    }
+    Triangle=Triangle+"\n"
+  }
+  return Triangle;
 }
 
 
-/*
-Create a function, drawArrow, that draws:
-
-     *
-    ***
-   *****
-  *******
- *********
-***********
-    ***
-    ***
-    ***
-
-Now refacto the function to take two parameters one for the height of the tree
-and another for the height of the base of the tree.
-for instance tree(3,4) looks like:
-  *
- ***
-*****
- ***
- ***
- ***
- ***
-*/
-
-var drawArrow = function(){
-  return "";
+var makeString=function(char,numofchar,str){
+  for (var i = 0; i < numofchar; i++) {
+    str=str+char;
+  }
+  return str;
+}
+var drawTriangleTwo = function(n){
+       var Triangle="\n"
+       //n=n+1;
+      for (var i = 1; i <= n ; i++) {
+        Triangle=makeString(" ",n-i,Triangle);
+        Triangle=makeString("*",(i-1)*2+1,Triangle);
+        
+        Triangle=Triangle+"\n";
+        
+   }
+   
+  return Triangle;
 }
 
 
-/*
-Create a function, inverted arrow, that draws:
- ***
- ***
-*****
- ***
-  *
-*/
 
-var drawInvertedArrow = function(){
-  return "";
+var drawbase= function(base,tree){
+  var basestr=""
+  var numofchar=Math.floor(((tree*2-1)-base)/2)
+  for (var i = 1; i <=base; i++) {
+    basestr=makeString(" ",numofchar,basestr)
+    basestr=makeString("*",3,basestr)+"\n"
+    
+  }
+  return basestr;
+}
+
+var drawArrow = function(tree,base){
+  var drawArrow=""
+  drawArrow=drawTriangleTwo(tree);
+
+  drawArrow=drawArrow+drawbase(base,tree);
+  return drawArrow;
+}
+
+
+var invert = function(n){
+ var Triangle=""
+      for (var i = n; i>=1 ; i--) {
+        Triangle=makeString(" ",n-i,Triangle);
+        Triangle=makeString("*",(i-1)*2+1,Triangle);
+        
+        Triangle=Triangle+"\n";
+        
+   }
+   
+  return Triangle;
+}
+
+var drawInvertedArrow = function(tree,base){
+  var InvertedArrow=""
+
+  InvertedArrow="\n"+drawbase(base,tree);
+  InvertedArrow=InvertedArrow+invert(tree);
+  return InvertedArrow;
 }
 
 /*
@@ -105,10 +90,33 @@ Now create a function, diamond, that draws:
    ***
     *
 
+    *
+   ***
+  *****
+ 
+ *******
+  *****  
+   ***
+    *
+    console.log(upside);
+  upside=upside.splice(upside.length-2)
+  console.log(upside);
+  upside=upside.join("\n")
+  console.log(upside);
 Now refactor your code to take parameter that is the size of the diamond.
 */
 
-var drawDiamond = function(){
+var drawDiamond = function(size){
+  var middle=Math.floor(size/2);
+  var upside=drawTriangleTwo(middle+1).slice(0,-1);
+  var downside=drawInvertedArrow(middle).split("\n");
+
+  for (var i = 1; i < downside.length; i++) {
+    downside[i]=" "+downside[i]
+  }
+  downside=downside.join("\n")
+    
+  return upside+downside;
 
 }
 
