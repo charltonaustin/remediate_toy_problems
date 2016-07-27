@@ -104,20 +104,96 @@ Create a function called, smile, that draw:
      ****              *****
       ****            *****
        ******************
-You should be able to parameterize this with some higher order
+You should be able to parameterize this with some higher order //29
 functions. Try and see if you can make some parameters so you can
 control different parts of the face.
 */
-var drawSmileDown = function(){
+var ies=function(fw,is){
+  var ies="\n"
+  ies=ies+makeString(" ",2," ")+makeString("*",4," ")+makeString(" ",is,"")+makeString("*",fw-(2+4+is+is+4+2),"")+makeString(" ",is,"")+makeString("*",4,"")+"\n"
+ ies=ies+makeString(" ",1," ")+makeString("*",5," ")+makeString(" ",is,"")+makeString("*",fw-(2+5+is+is+5),"")+makeString(" ",is,"")+makeString("*",5,"")
+ return ies;
+}
+var nois=function(fw,ns){
+  var nois="\n "+makeString("*",fw," ")+"\n";
+  nois=nois+"  "+makeString("*",Math.floor((fw-ns)/2),"")+makeString(" ",ns,"")+makeString("*",Math.floor((fw-ns)/2),"")+"\n";
+  return nois;
+}
+
+var head= function(fw){
+  var head="\n"+makeString(" ",4," ")+makeString("*",fw-8," ")+"\n";
+  head=head+makeString(" ",3," ")+makeString("*",fw-6," ")+""
+ return head;
+}
+var mouth=function(){
   var smile=""
-  for (var i = 28; i >=24; i--) {
-    if (i%4 === 0){
+  var numofsp=18
+  for (var i = 27; i >=23; i--) {
+    //console.log(i);
+    if (i===27){
       smile=makeString(" ",30-i,smile);
       smile=makeString("*",i,smile)+"\n";
+    }else if(i===23){
+      smile=makeString(" ",30-i,smile);
+      smile=makeString("*",18,smile)+"\n";
+      
     }else{
+      numofsp=numofsp-2;
       console.log(i);
-     smile=makeString(" ",30-i,smile);
-      smile=makeString("#",i,smile)+"\n";
+      smile=makeString(" ",30-i,smile);
+      smile=makeString("*",4,smile);
+      smile=makeString(" ",numofsp,smile);
+      smile=makeString("*",5,smile)+"\n";
+  }
+}
+    return smile;
+
+}
+var drawSmileup = function(){
+  var smile=""
+  var numofstar=3
+  var x=6;
+  for (var i =21 ; i <=27; i=i+2) {
+    smile=makeString(" ",x,smile);
+    if (i<25){
+      smile=makeString("*",i,smile)+"\n";
+    }else{
+      numofstar=numofstar+1
+     
+      smile=makeString("*",numofstar,smile);
+      smile=makeString(" ",3,smile);
+      smile=makeString("*",11,smile);
+      smile=makeString(" ",3,smile)
+      smile=makeString("*",numofstar,smile)+"\n";
+    }
+    x=x-1;
+  }
+  smile=smile+"  "+makeString("*",29,"")+"\n"
+  smile=smile+"  "+makeString("*",12,"")+makeString(" ",29-24,"")+makeString("*",12,"")
+  return smile;
+
+}
+
+
+var drawSmileDown = function(){
+  var smile=""
+  var numofsp=18
+  for (var i = 27; i >=23; i--) {
+    //console.log(i);
+    if (i===27){
+      smile=makeString(" ",30-i,smile);
+      smile=makeString("*",i,smile)+"\n";
+    }else if(i===23){
+      smile=makeString(" ",30-i,smile);
+      smile=makeString("*",18,smile)+"\n";
+      
+    }else{
+      numofsp=numofsp-2;
+      console.log(i);
+      smile=makeString(" ",30-i,smile);
+      smile=makeString("*",4,smile);
+      smile=makeString(" ",numofsp,smile);
+      smile=makeString("*",5,smile)+"\n";
   }
 }
     return smile;
@@ -125,9 +201,12 @@ var drawSmileDown = function(){
 }
 
 
-var drawSmile = function(){
+var drawSmile = function(fs,is,ns){
+  //console.log(mouth().split(""))
+  var mouthy=mouth().slice(0,-1);
 
-  return "";
+  return  head(fs)+ies(fs,is)+nois(fs,ns)+mouthy;
+  //return "\n"+drawSmileup()+"\n" + drawSmileDown();
 }
 
 /*
@@ -148,7 +227,17 @@ For instance the one above has 6 turns
 */
 
 var drawSpiral = function(){
-  return "";
+  var Spiral="\n";
+  for (var i = 0; i < 9; i++) {
+
+    if(i%2 ===0){
+      console.log(i,Spiral);
+      Spiral=Spiral+"*"+makeString("*",11-i,"")+makeString(" ",i,"")+"*\n"
+    }else{
+     Spiral=Spiral+makeString("*",i-1,"")+makeString(" ",13-i,"")+"*\n"
+    }
+  }
+  return Spiral;
 }
 
 module.exports = {drawTriangle, 
