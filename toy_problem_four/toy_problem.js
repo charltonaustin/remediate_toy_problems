@@ -28,15 +28,12 @@ Use the examples in mySpec as a template.
 
 var nextGreaterNumber = function(number){
 	var len=number.toString().split('');
-	console.log(len)
 	if (Number(len[len.length-1])>Number(len[len.length-2])){
-		console.log(len[len.length-2])
-		var swap=len[len.length-2]
-		console.log(len[len.length-1])
+		var swap=len[len.length-2];
 		len[len.length-2]=len[len.length-1]
         len[len.length-1]=swap;
-        console.log(len.join(","))
-		return Number(len.join(","))
+       
+		return Number(len.join(""))
 	}
   return number;
 }
@@ -62,7 +59,8 @@ var reverseTheString = function(string){
   for (var i= str.length-1; i >=0; i--) {
     string=string+str[i]+" "
   }
-  return string;
+
+  return string.slice(0,-1);
 }
 
 
@@ -92,11 +90,21 @@ Write tests for this if you can.
 
 var minEditDistance = function(str1, str2){
   var numofEdit=0;
-  
+  for (var i = 0; i < str1.length; i++) {
+    if (str1[i]!== str2[i]){
+      //console.log(str1[i] , str2[i])
+      str1[i]=str2[i];
+      //console.log(str1[i] , str2[i])
+      numofEdit++
+    }
+    //console.log(str1)
+  }
+  console.log(numofEdit)
   return numofEdit;
 }
 module.exports = { findMajorityElement,
                    nextGreaterNumber,
+                   reverseTheString,
                    minEditDistance};
 
 
