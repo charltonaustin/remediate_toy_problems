@@ -36,8 +36,65 @@ method. Then describe the complexity of each method.
 */
 
 var findSumOfPrimesLessThan = function(number){
-  return [];
+	var sum=0;
+	if(number>=500000){
+		return "????"
+    }
+    
+	var arr=[];
+	var sum=0
+	for (var i = 2; i < number ; i++) {
+		arr.push (i);
+	}
+	var indexp=1;
+	var p=2;
+	for (var i = indexp; i < arr.length; i++) {
+		for (var y = i; y< arr.length; y++) {
+			if(arr[y]%p === 0){
+			arr.splice(y,1);
+			y--;
+		}
+	}
+	p=arr[indexp];
+    indexp++;
+    }
+    for (var i = 0; i < arr.length; i++) {
+	sum=sum+arr[i];
+    }
+    return sum;
 }
+
+
+var isPrime=function(num){
+     var flage=true;
+     for (var i = 2; i < num; i++) {
+     	
+     	if (num%i===0){
+     		return false;
+     	}
+     }
+     return flage
+}
+
+var findSumOfPrimesLessThan1 = function(number){
+	var sum=0;
+	if(number>=500000){
+		return "????"
+    }
+	for (var i = 2; i < number ; i++) {
+		if(isPrime(i)){
+			console.log("prime",i)
+			sum=sum+i;
+		}else{
+			//console.log("not prime",i)
+		}
+
+	}
+  return sum;
+		}
+
+
+
 
 module.exports = {findSumOfPrimesLessThan};
 

@@ -3,7 +3,18 @@ Given an array of size n, find the element which occurs more than n/2 times. Thi
 */
 
 var findMajorityElement = function(array){
-  
+  for (var i = 0; i < array.length; i++) {
+  	 var numofi=1
+  	for (var j=i+1; j < array.length; j++) {
+  		if(array[j]===array[i]){
+  			numofi++;
+  		}
+  	}
+  	//console.log(numofi , array.length /2)
+  	if(numofi > array.length /2){
+  		return array[i]
+  	}
+  }
 }
 
 /*
@@ -16,6 +27,14 @@ Use the examples in mySpec as a template.
 */
 
 var nextGreaterNumber = function(number){
+	var len=number.toString().split('');
+	if (Number(len[len.length-1])>Number(len[len.length-2])){
+		var swap=len[len.length-2];
+		len[len.length-2]=len[len.length-1]
+        len[len.length-1]=swap;
+       
+		return Number(len.join(""))
+	}
   return number;
 }
 
@@ -35,7 +54,13 @@ tests for this guy.
 */
 
 var reverseTheString = function(string){
-  return string;
+  var str= string.split(" ")
+  string=""
+  for (var i= str.length-1; i >=0; i--) {
+    string=string+str[i]+" "
+  }
+
+  return string.slice(0,-1);
 }
 
 
@@ -64,10 +89,22 @@ Write tests for this if you can.
 */
 
 var minEditDistance = function(str1, str2){
-  return 0;
+  var numofEdit=0;
+  for (var i = 0; i < str1.length; i++) {
+    if (str1[i]!== str2[i]){
+      //console.log(str1[i] , str2[i])
+      str1[i]=str2[i];
+      //console.log(str1[i] , str2[i])
+      numofEdit++
+    }
+    //console.log(str1)
+  }
+  console.log(numofEdit)
+  return numofEdit;
 }
 module.exports = { findMajorityElement,
                    nextGreaterNumber,
+                   reverseTheString,
                    minEditDistance};
 
 
