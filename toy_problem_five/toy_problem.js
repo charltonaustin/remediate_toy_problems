@@ -10,6 +10,41 @@ Write tests for this guy.
 Use your previous toy problems as examples for how to write tests for this guy.
 Good luck with it.
 */
-module.exports = { };
+
+var bestItem =function (items,Weightreq){
+	var filteronWeight=[]
+	console.log(items);
+	for (var i = 0; i < items.length; i++) {
+		console.log()
+		var Weight=0;
+		for (var j = 0; j < i+1 && j< items.length ; j++) {
+			console.log(items[j])
+			Weight=Weight+items[j][1]
+		}
+		if(Weight<=Weightreq){
+			var smallarr=[]
+			for (var i = 0; i< j; i++) {
+			smallarr.push(items[i])
+		}
+		filteronWeight.push(smallarr)
+		}
+
+	}
+    var beniftvalue=0;
+    var index;
+	for (var i = 0; i < filteronWeight.length; i++) {
+         var sumbenift=0
+		for (var j = 0; j < filteronWeight[i].length; j++) {
+		        sumbenift=sumbenift+filteronWeight[i][j][2]
+		}
+		if(sumbenift>beniftvalue){
+			beniftvalue=sumbenift;
+			index=filteronWeight[i];
+		}
+	}
+	console.log(filteronWeight);
+	return index;
+}
+module.exports = {bestItem:bestItem};
 
 

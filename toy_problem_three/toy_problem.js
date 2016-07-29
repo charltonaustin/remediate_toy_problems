@@ -71,16 +71,176 @@ a hand and return which cards they would like to
 discard and which cards they would like to keep.
 */
 
-var generateAHand  = function(deck){
-  return [];
+var cardtype =function(){
+	//console.log(Math.floor(Math.random()*4+1))
+	return Math.floor(Math.random()*3+1);
+}
+var cardvalue =function(){
+	return Math.floor(Math.random()*14+2);
 }
 
+
+
+var generateAHand  = function(deck){
+	var type=["d","h","c","s"]
+	var Hand=[]
+	//Hand.push([cardtype(), cardvalue()])
+	for (var i = 0s; i < 5; i++) {
+		/*var card=[cardtype(), cardvalue()]
+		console.log(card)
+		for (var y = 0; y< Hand.length; y++) {
+			console.log(Hand[y][0],card[0],Hand[y][1],card[1])
+			if(Hand[y][0]!==card[0]&&Hand[y][1]!==card[1]){
+				console.log("ghjk")
+				Hand.push(card)
+			}else{
+				i--
+			}
+		}*/
+		Hand.push([cardtype(), cardvalue()])
+	}
+  return Hand;
+}
+var competition=function(){
+	handOne=generateAHand();
+	handTwo=generateAHand();
+	scoreTwoHands(handOne,handTwo);
+}
+
+var RoyalFlush=function(hand){
+	//return true if the card is RoyalFlus
+	if( hand[1][0] == hand[0][0]&&hand[2][0]== hand[0][0]&& hand[3][0]==hand[0][0]&& hand[4][0]==hand[0][0]){
+          if(hand[0][1]===14 ||hand[1][1]===14||hand[2][1]===14||hand[3][1]===14||hand[4][1]===14){
+          	if(hand[0][1]===13 ||hand[1][1]===13||hand[2][1]===13||hand[3][1]===13||hand[4][1]===14){
+          		if(hand[0][1]===12 ||hand[1][1]===12||hand[2][1]===12||hand[3][1]===12||hand[4][1]===12){
+          		  if(hand[0][1]===11 ||hand[1][1]===11||hand[2][1]===11||hand[3][1]===11||hand[4][1]===11){
+          		   if(hand[0][1]===10 ||hand[1][1]===10||hand[2][1]===10||hand[3][1]===10||hand[4][1]===10){
+          		   	return true;
+          		   }
+          	      }
+          	    }
+          	}
+          }
+	}
+	return false;
+}
+var Flush=function(hand){
+	//return true if the card is Straight Flush
+	if( hand[1][0] == hand[0][0]&&hand[2][0]== hand[0][0]&& hand[3][0]==hand[0][0]&& hand[4][0]==hand[0][0]){
+		return true;
+	}else
+	{
+		return false;
+	}
+}
+var straightFlush =function(hand){
+	if( hand[1][0] ==function hand[0][0]&&hand[2][0]== hand[0][0]&& hand[3][0]==hand[0][0]&& hand[4][0]==hand[0][0]){
+		
+			var arr=[hand[0][1],hand[1][1],hand[2][1],hand[3][1],hand[4][1]];
+			arr.sort();
+
+            if(isConsecutive(arr)){
+			return true;
+	        }
+	
+	
+		return false;
+	}
+
+}
+var isConsecutive=function(arr){
+	console.log(arr)
+	for (var i = 0; i < arr.length-1; i++) {
+		console.log(arr[i]+1 ,arr[i+1])
+		if(arr[i]+1 !==arr[i+1]){
+			return false
+		}
+	}
+	return true;
+}
+
+var Straight=function(hand){
+	var arr=[hand[0][1],hand[1][1],hand[2][1],hand[3][1],hand[4][1]];
+			arr.sort();
+
+            if(isConsecutive(arr)){
+			return true;
+	        }
+	
+	
+		return false;
+
+}
+
+var fullHouse=function(hand){
+	var arr=[hand[0][1],hand[1][1],hand[2][1],hand[3][1],hand[4][1]];
+	arr.sort();
+	if(arr[1]===arr[0]&&arr[2]===arr[0]){
+		if(arr[4]===arr[3]){
+			return true
+		}
+
+	}else if(arr[2]===arr[4]&&arr[3]===arr[4]){
+       if(arr[0]===arr[1]){
+			return true
+		}
+	}
+	return false
+	//return true if the card is RoyalFlush
+}
+var ThreeOfKind=function(hand){
+	var arr=[hand[0][1],hand[1][1],hand[2][1],hand[3][1],hand[4][1]];
+	arr.sort();
+	if(arr[1]===arr[0]&&arr[2]===arr[0]){
+		return true
+	}else if(arr[2]===arr[4]&&arr[3]===arr[4]){
+		return true
+		
+	}
+	return false
+
+} 
+
+var TwoPair=function(Hand){
+   /*var arr=[hand[0][1],hand[1][1],hand[2][1],hand[3][1],hand[4][1]];
+  arr.sort();
+  if(hand[0][1]===hand[1][1]){
+  	if(hand[2][1]===hand[3][1]){
+        return true
+  	}else if(hand[3][1]===hand[4][1]){
+        return true
+    }
+       
+  	
+  }*/
+}
+
+var onePair=function(hand){
+	var arr=[hand[0][1],hand[1][1],hand[2][1],hand[3][1],hand[4][1]];
+    arr.sort();
+    if(hand[0][1]===hand[1][1]||hand[2][1]===hand[3][1]||hand[3][1]===hand[4][1]){
+    	return true;
+    }
+    return false;
+}
+var HighCard=function(hand){
+//any one dosent 
+}
 var scoreTwoHands = function(handOne, handTwo){
   // Return the higher of the two hands
+  //if()
+  
+  
   return handOne;
 }
 var replaceCards = function(cardsToKeep, cardsToDiscard){
   // return a full set of cards
+  var fullset=cardsToKeep
+  for (var i = 0; i <cardsToDiscard; i++) {
+  	fullset.push([cardtype(), cardvalue()])
+  }
+  return fullset
+
 }
 
 var playTwoAI = function(aIOne, aITwo){
