@@ -177,6 +177,46 @@ You should be able to parameterize this with some higher order
 functions. Try and see if you can make some parameters so you can
 control different parts of the face.
 */
+var countStar = function(n){
+	var result = "";
+	for(var i=0; i<n ; i++){
+		result = result+"*";
+	}
+	return result;
+}
+var countSpace = function(n){
+	var result = "";
+	for(var i=0; i<n ; i++){
+		if(i===2 || i===3 || i===4 || i===16 || i===17 || i===18){
+			result=result+" ";
+    }else{
+		  result = result+"*";
+    }
+	}
+	return result;
+}
+var upperPart = function(n){
+	var result = "\n";
+	var star = countStar(21);
+	var star2 = countSpace(21);
+	for(var i=0 ; i<n ; i++){
+		var space="";
+		for(var x=0 ; x<(n-i)-1 ; x++){
+			space = space + " ";
+		}
+		if(i===2){
+			result = result+space+"**"+star2+"**"+"\n";
+		}
+    else if(i===3){
+      result=result+space+""
+    }
+    else{
+  		result = result+space+star+"\n";
+  		star=star+"**";
+  }
+	}
+	return result;
+}
 var drawSmile = function(){
 for(var i=0 ; i<11 ; i++){
 }
@@ -196,8 +236,83 @@ Create a funciton called drawSpiral that draws:
 Refactor this to define the number of turns of the spiral
 For instance the one above has 6 turns
 */
-var drawSpiral = function(){
-return "";
+var stars = function(n){
+  var star = "";
+  for(var i=0 ; i<n+(n+1) ; i++){
+    star = star + "*";
+  }
+  return star;
+}
+var drawSpiral = function(n){
+var result = "\n";
+var begin = "   ";
+var star = stars(n);
+for(var i=0 ; i<n+3; i++){
+  if(i===1){
+    var s="";
+    for(var e=0 ; e<12 ; e++){
+      s=s+" ";
+    }
+    result=result+begin+s+"*"+"\n";
+  }
+  else if(i===2){
+    var s = "";
+    for(var c=0 ; c<10 ; c++){
+      s=s+"*";
+    }
+    result=result+begin+s+"  "+"*"+"\n";
+  }else if(i===3){
+    var sp="";
+    for(var t=0 ; t<8 ; t++){
+      sp=sp+" ";
+    }
+    result=result+begin+"*"+sp+"*"+"  "+"*"+"\n";
+  }
+  else if(i===4){
+    result=result+begin+"*"+"  "+"****"+"  "+"*"+"  "+"*"+"\n";
+  }
+  else if(i===5){
+    var p="";
+    for(var r=0 ; r<5 ; r++){
+      p=p+" ";
+    }
+    result=result+begin+"*"+"  "+"*"+p+"*"+"  "+"*"+"\n";
+  }
+  else if(i===6){
+    var s="";
+    for(var w=0 ; w<7 ; w++){
+      s=s+"*";
+    }
+    result=result+begin+"*"+"  "+s+"  "+"*"+"\n";
+  }
+  else if(i===7){
+    var s="";
+    for(var e=0 ; e<11 ; e++){
+      s=s+" ";
+    }
+    result=result+begin+"*"+s+"*"+"\n";
+  }
+  else{
+    result=result+begin+star+"\n";
+  }
+}
+return result;
+}
+var spiralRefactor = function(n){
+  var result = [];
+  var row =[];
+  var drawRow = function(n){
+    for(var i=0 ; i<n+3 ; i++){
+      if(i%2 !==0){
+        for(var e=0 ; e<2*n+1 ; e++){
+          row.push("*");
+        }
+      }
+    }
+    
+  }
+  
+  return result;
 }
  module.exports = {  drawTriangle, 
                    drawTriangleTwo, 
@@ -205,4 +320,4 @@ return "";
                    drawInvertedArrow,
                    drawDiamond,
                    drawSmile,
-                   drawSpiral};
+                   drawSpiral};}

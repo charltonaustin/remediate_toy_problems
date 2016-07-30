@@ -34,10 +34,46 @@ You should ask an instructor for an explanation
 when you have solved the problem using the first
 method. Then describe the complexity of each method.
 */
-
-var findSumOfPrimesLessThan = function(number){
-  return [];
+var isPrime = function(n){
+	for(var i=2 ; i<n ; i++){
+		if(n%i === 0){
+			return false;
+		}
+	}
+	return true;
 }
+var findSumOfPrimesLessThan = function(number){
+	var result=[];
+	var sum = 0;
+	for(var i=2 ; i<number ; i++)
+	{
+		if(isPrime(i)){
+			result.push(i);
+			sum = sum+i;
+		}
+	}
+  return sum;
+}
+
+var findSumOfPrimesLessThan22 = function(number){
+	var arr = [];
+	for(var i=2 ; i<number ; i++ ){
+		arr.push(i);
+	}
+	for(var i=0 ; i<arr.length ; i++){
+		for(var j=i+1 ; j<arr.length ; j++){
+			if(arr[j]%arr[i] === 0){
+				arr.splice(j,1);
+			}
+		}
+	}
+	var sum = 0;
+	for(var i=0 ; i<arr.length ; i++){
+		sum = sum + arr[i];
+	}
+	return sum;
+}
+
 
 module.exports = {findSumOfPrimesLessThan};
 

@@ -54,7 +54,7 @@
   var spiral = "\n   *************\n               *\n   **********  *\n   *        *  *\n   *  ****  *  *\n   *  *     *  *\n   *  *******  *\n   *           *\n   *************\n";
   describe('drawSpiral', function () {
     it('should draw a spiral', function () {
-      expect(drawSpiral()).toBe(spiral);
+      expect(drawSpiral(6)).toBe(spiral);
     });
   });
 

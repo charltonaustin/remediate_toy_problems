@@ -71,8 +71,45 @@ a hand and return which cards they would like to
 discard and which cards they would like to keep.
 */
 
-var generateAHand  = function(deck){
-  return [];
+var generateAHand  = function(){
+  var deck = [];
+  var duckMap = [];
+  var result = [];
+  for(var i=1 ; i<53 ; i++){
+  	deck.push(i);
+  }
+  for(var i=1 ; i<14 ; i++){
+  	var temp = "S"+i;
+  	duckMap.push(temp);
+  }
+  for(var i=1 ; i<14 ; i++){
+  	var temp = "H"+i;
+  	duckMap.push(temp);
+  }
+  for(var i=1 ; i<14 ; i++){
+  	var temp = "D"+i;
+  	duckMap.push(temp);
+  }
+  for(var i=1 ; i<14 ; i++){
+  	var temp = "C"+i;
+  	duckMap.push(temp);
+  }
+  var random = [];
+  for(var i=0 ; i<5 ; i++){
+  	var temp = Math.floor(Math.random()*52);
+  	if(random.length === 0 || random.indexOf(temp) < 0){
+  		random.push(temp);
+  	} 
+  	else{
+  		i--;
+  	}
+  }
+  var hand = [];
+  for(var i=0 ; i<random.length ; i++){
+   var temp = duckMap.splice(random[i],1);
+   hand.push(temp);
+  }
+  return {deck: duckMap, hand: random};
 }
 
 var scoreTwoHands = function(handOne, handTwo){
