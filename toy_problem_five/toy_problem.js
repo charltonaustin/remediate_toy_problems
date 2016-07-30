@@ -13,12 +13,12 @@ Good luck with it.
 
 var bestItem =function (items,Weightreq){
 	var filteronWeight=[]
-	console.log(items);
+	var beniftvalue=0;
+    var index;
+	
 	for (var i = 0; i < items.length; i++) {
-		console.log()
 		var Weight=0;
 		for (var j = 0; j < i+1 && j< items.length ; j++) {
-			console.log(items[j])
 			Weight=Weight+items[j][1]
 		}
 		if(Weight<=Weightreq){
@@ -30,8 +30,7 @@ var bestItem =function (items,Weightreq){
 		}
 
 	}
-    var beniftvalue=0;
-    var index;
+    
 	for (var i = 0; i < filteronWeight.length; i++) {
          var sumbenift=0
 		for (var j = 0; j < filteronWeight[i].length; j++) {
